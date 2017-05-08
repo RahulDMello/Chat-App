@@ -32,6 +32,7 @@ and open the template in the editor.
             }
             
             socket.on('AttachNewMsg', function(msg) {
+                document.getElementById('messagesContainer').scrollTop = document.getElementById('messagesContainer').scrollHeight;
                 document.getElementById('messages').innerHTML += "<br/>" +  msg;
             });
             
