@@ -7,7 +7,11 @@
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
-var app = http.createServer();
+var app = http.createServer(function(req, res) {
+    res.writeHead(200, {"Context-Type": "text/plain"});
+    res.write('This is anonDfeline\'s chat server');
+    res.end();
+});
 var io = require('socket.io')(app);
 
 io.on('connection', onRequest);
@@ -20,5 +24,5 @@ function onRequest(socket) {
 }
 
 // var io = require('socket.io').listen(server);
-app.listen((process.env.PORT || 8080));
+app.listen(8080);
 console.log("The server is now running...");
