@@ -24,5 +24,5 @@ function onRequest(socket) {
 }
 
 // var io = require('socket.io').listen(server);
-app.listen(8080);
+app.listen((process.env.PORT || 8080));
 console.log("The server is now running...");
