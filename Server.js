@@ -8,9 +8,8 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var app = http.createServer(function(req, res) {
-    res.writeHead(200, {"Context-Type": "text/plain"});
-    res.write('This is anonDfeline\'s chat server');
-    res.end();
+    res.writeHead(200, {"Context-Type": "text/html"});
+    fs.createReadStream("./index.html").pipe(res);
 });
 var io = require('socket.io')(app);
 

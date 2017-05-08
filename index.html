@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>anonDfeline's Chat Service</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src ="node_modules\socket.io\node_modules\socket.io-client\dist\socket.io.js"></script>
+        
+        <script>
+            
+            var socket = io('https://peaceful-reaches-26131.herokuapp.com/');
+            
+            function isEnterKey(event) {
+                if (event.keyCode===13) {
+                    sayHelloWorld();
+                }
+            }
+            
+            function sayHelloWorld() {
+                document.getElementById('messagesContainer').scrollTop = document.getElementById('messagesContainer').scrollHeight;
+                // document.getElementById('txtInput').value = "Hello World!";
+                socket.emit('RecieveNewMsg', document.getElementById('txtInput').value);
+                document.getElementById('txtInput').value = "";
+                
+            }
+            
+            socket.on('AttachNewMsg', function(msg) {
+                document.getElementById('messages').innerHTML += "<br/>" +  msg;
+            });
+            
+        </script>
+    </head>
+    <body>
+        <div>
+            <div id='messagesContainer' style="max-height: 500px; overflow-y: scroll;">
+                <p id = 'messages' style="float: left;"></p>
+            </div>
+            <br/>
+            <input type='text' id='txtInput' onkeypress=isEnterKey(event) />
+            <input type='button' onclick=sayHelloWorld() value="submit" />
+        </div>
+    </body>
+</html>
