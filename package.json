@@ -1,0 +1,15 @@
+{
+  "name": "chatservice",
+  "version": "1.0.0",
+  "description": "practise chat service",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "rahul (anondfeline)",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^1.7.4"
+  }
+}
